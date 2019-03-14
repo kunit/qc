@@ -1,0 +1,8 @@
+.idea/*
+.DS_Store
+dist/
+qc
+coverage.txt
+*.db
+*.log
+*.yml
