@@ -7,8 +7,6 @@ services:
     container_name: qc-web
     volumes:
       - ./docker/laravel-app:/var/www/html:cached
-      - ./docker/tcpdp/tcpdp-config.toml:/etc/tcpdp-config.toml:cached
-      - ./docker/tcpdp/logs:/var/log/tcpdp:cached
     networks:
       app_net:
         ipv4_address: 10.200.200.2
