@@ -4,5 +4,6 @@
 dist/
 docker/mysql/data/
 docker/laravel-app/app/
-qc
+docker/laravel-app/tcpdp.pid
 coverage.txt
+qc

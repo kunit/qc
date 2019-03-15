@@ -7,3 +7,7 @@ composer install
 
 cp /var/www/html/.env /var/www/html/app
 php artisan migrate
+
+if [ ! -e /var/log/tcpdp ]; then
+    mkdir /var/log/tcpdp
+fi
