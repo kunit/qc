@@ -1,8 +1,13 @@
 .idea/*
 .DS_Store
+
 dist/
+docker/mysql/data/
+docker/laravel-app/app/
+docker/tcpdp/logs
 qc
 coverage.txt
+
 *.db
 *.log
 *.yml

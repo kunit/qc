@@ -1,0 +1,24 @@
+[tcpdp]
+pidfile = "./tcpdp.pid"
+dumper = "mysql"
+
+[probe]
+target = "10.200.200.3:3306"
+interface = "eth0"
+bufferSize = "64MB"
+immediateMode = false
+snapshotLength = "65535B"
+internalBufferLength = 10000
+filter = ""
+
+[log]
+dir = "/var/log/tcpdp"
+enable = true
+stdout = false
+format = "json"
+
+[dumpLog]
+dir = "/var/log/tcpdp"
+enable = true
+stdout = true
+format = "json"

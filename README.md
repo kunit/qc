@@ -26,7 +26,7 @@ $ echo dump.log | qc -a
 
 ## TODO
 
-- [ ] 動作を確認できる docker-compose.yml を準備
+- [x] 動作を確認できる docker-compose.yml を準備
 - [ ] 特定のSQLを警告対象から除外する(whitelist)
 
 ## 参照

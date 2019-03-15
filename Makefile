@@ -25,6 +25,20 @@ lint:
 test:
 	$(GO) test -v $(shell go list ./... | grep -v misc) -coverprofile=coverage.txt -covermode=count
 
+docker-qc-up:
+	docker-compose up -d
+	docker exec -it qc-web dockerize -wait tcp://10.200.200.3:3306 -timeout 1m
+	docker cp ./docker/cmd.sh qc-web:/
+	docker exec -it qc-web sh -c "chmod a+x /cmd.sh; /cmd.sh"
+	$(eval ver = v$(shell gobump show -r version/))
+	docker cp dist/${ver}/qc_${ver}_linux_amd64.tar.gz qc-web:/tmp
+	docker exec -it qc-web sh -c "cd /tmp; tar xvf qc_${ver}_linux_amd64.tar.gz; cp qc_${ver}_linux_amd64/qc /usr/local/bin"
+	docker cp ./docker/tcpdp/tcpdp-config.toml qc-web:/usr/local/etc
+	docker exec -it qc-web sh -c "tcpdp probe -c /usr/local/etc/tcpdp-config.toml | /usr/local/bin/qc -a"
+
+docker-qc-down:
+	docker-compose down
+
 build:
 	$(GO) build -ldflags="$(BUILD_LDFLAGS)" ./cmd/qc
 
@@ -41,4 +55,4 @@ release:
 	$(eval ver = v$(shell gobump show -r version/))
 	ghr -username kunit -replace ${ver} dist/${ver}
 
-.PHONY: default test
+.PHONY: default test docker-qc-up docker-qc-down
