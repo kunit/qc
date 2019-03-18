@@ -6,3 +6,9 @@ env:
   - GO111MODULE=on
 script:
   - make ci
+after_script:
+  - codecov
+cache:
+  directories:
+    - /go/pkg/mod/cache/download
+    - /go/src/github.com
