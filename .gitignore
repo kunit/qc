@@ -1,9 +1,9 @@
-.idea/*
+/.idea/*
 .DS_Store
 
-dist/
-docker/mysql/data/
-docker/laravel-app/app/
-docker/laravel-app/tcpdp.pid
-coverage.txt
-qc
+/dist/
+/docker/mysql/data/
+/docker/laravel-app/app/
+/docker/laravel-app/tcpdp.pid
+/coverage.txt
+/qc
